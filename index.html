@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grand Horizon Resort | Experiencia Premium</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .font-serif { font-family: 'Playfair Display', serif; }
+    </style>
+</head>
+<body class="bg-stone-50 text-stone-800 antialiased relative">
+
+   <!-- BOTÓN FLOTANTE DE WHATSAPP PREMIUM CORREGIDO -->
+    <!-- REEMPLAZA EL NÚMERO 50512345678 POR EL TUYO (CON CÓDIGO DE PAÍS) -->
+    <a href="https://wa.me/50512345678?text=Hola,%20me%20gustaría%20obtener%20más%20información%20y%20reservar%20una%20habitación." 
+       target="_blank" 
+       rel="noopener noreferrer" 
+       class="fixed bottom-6 right-6 z-50 bg-[#25D366] hover:bg-[#20ba5a] text-white p-4 rounded-full shadow-lg hover:scale-110 transition duration-300 flex items-center justify-center w-14 h-14"
+       title="Reservar por WhatsApp">
+        <svg class="w-7 h-7 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.4.01 12.008.01c3.202.001 6.212 1.246 8.477 3.516 2.266 2.27 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.713-1.457L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.42 9.863-9.864.001-2.63-1.019-5.101-2.875-6.959C16.544 1.964 14.078 1.945 11.99 1.945c-5.439 0-9.864 4.42-9.867 9.864-.001 1.734.461 3.428 1.338 4.92l-.994 3.626 3.71-.973zm13.102-7.445c-.302-.151-1.791-.882-2.069-.984-.278-.101-.482-.151-.684.151-.202.301-.782 1.011-.958 1.216-.177.205-.354.23-.656.079-.302-.151-1.274-.469-2.426-1.496-.897-.8-1.502-1.788-1.678-2.09-.177-.302-.019-.465.132-.614.136-.134.302-.353.454-.53.151-.177.202-.303.303-.505.101-.202.051-.379-.025-.53-.076-.151-.684-1.646-.937-2.254-.247-.597-.5-.516-.684-.526-.177-.01-.379-.012-.583-.012-.204 0-.536.077-.816.379-.28.303-1.074 1.049-1.074 2.559 0 1.51 1.1 2.973 1.251 3.175.151.202 2.164 3.305 5.242 4.636.732.317 1.303.507 1.748.649.736.233 1.407.2 1.937.12.59-.089 1.791-.733 2.043-1.439.252-.706.252-1.312.177-1.439-.075-.127-.279-.202-.581-.353z"/>
+        </svg>
+    </a>
+
+    <nav class="fixed w-full z-40 bg-white/80 backdrop-blur-md border-b border-stone-200">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="#" class="font-serif text-2xl tracking-widest uppercase font-semibold text-stone-900">GRAND HORIZON</a>
+            <div class="hidden md:flex space-x-8 text-sm tracking-widest uppercase font-medium">
+                <a href="#inicio" class="hover:text-amber-600 transition">Inicio</a>
+                <a href="#hotel" class="hover:text-amber-600 transition">El Hotel</a>
+                <a href="#habitaciones" class="hover:text-amber-600 transition">Habitaciones</a>
+                <a href="#servicios" class="hover:text-amber-600 transition">Servicios</a>
+                <a href="#contacto" class="hover:text-amber-600 transition">Contacto</a>
+            </div>
+            <a href="https://wa.me/50512345678?text=Hola,%20quiero%20hacer%20una%20reserva." target="_blank" class="bg-stone-900 hover:bg-amber-700 text-white text-xs tracking-widest uppercase font-medium px-6 py-3 transition duration-300">Reservar Ahora</a>
+        </div>
+    </nav>
+
+    <section id="inicio" class="relative h-screen flex items-center justify-center bg-stone-900 overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1920&q=80" alt="Hotel Luxury" class="absolute inset-0 w-full h-full object-cover opacity-40">
+        <div class="relative z-10 text-center px-4 max-w-4xl mx-auto">
+            <span class="text-amber-400 text-xs tracking-widest uppercase font-semibold block mb-4">Un Refugio de Lujo y Confort</span>
+            <h1 class="font-serif text-5xl md:text-7xl text-white font-light tracking-wide leading-tight mb-8">El arte de la hospitalidad exclusiva.</h1>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#habitaciones" class="bg-amber-600 hover:bg-amber-700 text-white text-xs tracking-widest uppercase font-semibold px-8 py-4 transition duration-300">Explorar Suites</a>
+                <a href="https://wa.me/50512345678?text=Hola,%20solicito%20información%20sobre%20disponibilidad." target="_blank" class="border border-white text-white hover:bg-white hover:text-stone-900 text-xs tracking-widest uppercase font-semibold px-8 py-4 transition duration-300">Escríbenos por WhatsApp</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="hotel" class="py-24 px-6 max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+        <div>
+            <span class="text-amber-600 text-xs tracking-widest uppercase font-semibold block mb-2">Bienvenidos</span>
+            <h2 class="font-serif text-4xl text-stone-900 font-light mb-6">Donde el tiempo se detiene y el confort comienza.</h2>
+            <p class="text-stone-600 leading-relaxed mb-6">Ubicado en un entorno privilegiado, nuestro hotel fusiona la arquitectura sofisticada con un servicio de clase mundial. Cada detalle ha sido cuidadosamente diseñado para ofrecer a nuestros huéspedes una estancia inolvidable, llena de tranquilidad, exclusividad y bienestar.</p>
+            <p class="text-stone-600 leading-relaxed">Ya sea por negocios o por placer, aquí encontrará un santuario privado lejos del ruido cotidiano.</p>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+            <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=800&q=80" alt="Interior" class="w-full h-64 object-cover rounded-sm">
+            <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80" alt="Pool" class="w-full h-64 object-cover rounded-sm mt-8">
+        </div>
+    </section>
+
+    <section id="habitaciones" class="py-24 bg-stone-100 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-amber-600 text-xs tracking-widest uppercase font-semibold block mb-2">Alojamiento</span>
+                <h2 class="font-serif text-4xl text-stone-900 font-light">Nuestras Exclusivas Suites</h2>
+                <div class="w-12 h-[1px] bg-amber-600 mx-auto mt-4"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white border border-stone-200 group overflow-hidden">
+                    <div class="overflow-hidden h-64">
+                        <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=800&q=80" alt="Suite Ejecutiva" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="font-serif text-xl text-stone-900 mb-2">Deluxe King Suite</h3>
+                        <p class="text-stone-500 text-sm mb-6">Vistas panorámicas, cama king size y tina de hidromasaje privada.</p>
+                        <div class="flex justify-between items-center pt-4 border-t border-stone-100">
+                            <span class="text-stone-900 font-semibold text-lg">C$ 6,500 <span class="text-xs text-stone-400 font-normal">/ Noche</span></span>
+                            <a href="https://wa.me/50512345678?text=Hola,%20deseo%20reservar%20la%20Deluxe%20King%20Suite." target="_blank" class="text-xs tracking-widest uppercase font-semibold text-amber-600 hover:text-stone-900 transition">Reservar</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white border border-stone-200 group overflow-hidden">
+                    <div class="overflow-hidden h-64">
+                        <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80" alt="Suite Master" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="font-serif text-xl text-stone-900 mb-2">Grand Ocean Suite</h3>
+                        <p class="text-stone-500 text-sm mb-6">Terraza privada frente al mar, sala de estar independiente y bar premium.</p>
+                        <div class="flex justify-between items-center pt-4 border-t border-stone-100">
+                            <span class="text-stone-900 font-semibold text-lg">C$ 9,100 <span class="text-xs text-stone-400 font-normal">/ Noche</span></span>
+                            <a href="https://wa.me/50512345678?text=Hola,%20deseo%20reservar%20la%20Grand%20Ocean%20Suite." target="_blank" class="text-xs tracking-widest uppercase font-semibold text-amber-600 hover:text-stone-900 transition">Reservar</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white border border-stone-200 group overflow-hidden">
+                    <div class="overflow-hidden h-64">
+                        <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=800&q=80" alt="Suite Presidencial" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="font-serif text-xl text-stone-900 mb-2">Presidential Penthouse</h3>
+                        <p class="text-stone-500 text-sm mb-6">Máximo lujo. Alberca privada, chef disponible y acceso VIP exclusivo.</p>
+                        <div class="flex justify-between items-center pt-4 border-t border-stone-100">
+                            <span class="text-stone-900 font-semibold text-lg">C$ 16,400 <span class="text-xs text-stone-400 font-normal">/ Noche</span></span>
+                            <a href="https://wa.me/50512345678?text=Hola,%20deseo%20reservar%20el%20Presidential%20Penthouse." target="_blank" class="text-xs tracking-widest uppercase font-semibold text-amber-600 hover:text-stone-900 transition">Reservar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="servicios" class="py-24 max-w-7xl mx-auto px-6">
+        <div class="text-center max-w-2xl mx-auto mb-16">
+            <span class="text-amber-600 text-xs tracking-widest uppercase font-semibold block mb-2">Experiencias</span>
+            <h2 class="font-serif text-4xl text-stone-900 font-light">Servicios Cinco Estrellas</h2>
+            <div class="w-12 h-[1px] bg-amber-600 mx-auto mt-4"></div>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+            <div class="p-8 border border-stone-200 bg-white shadow-sm hover:shadow-md transition duration-300">
+                <span class="text-stone-300 font-serif text-4xl block mb-2 font-light">01</span>
+                <h3 class="font-serif text-lg text-stone-900 font-medium mb-3 tracking-wide">Restaurante Gourmet</h3>
+                <p class="text-stone-500 text-sm leading-relaxed">Alta cocina internacional preparada por reconocidos chefs galardonados.</p>
+            </div>
+            <div class="p-8 border border-stone-200 bg-white shadow-sm hover:shadow-md transition duration-300">
+                <span class="text-stone-300 font-serif text-4xl block mb-2 font-light">02</span>
+                <h3 class="font-serif text-lg text-stone-900 font-medium mb-3 tracking-wide">Spa & Wellness</h3>
+                <p class="text-stone-500 text-sm leading-relaxed">Tratamientos personalizados, masajes terapéuticos, sauna y circuito de agua.</p>
+            </div>
+            <div class="p-8 border border-stone-200 bg-white shadow-sm hover:shadow-md transition duration-300">
+                <span class="text-stone-300 font-serif text-4xl block mb-2 font-light">03</span>
+                <h3 class="font-serif text-lg text-stone-900 font-medium mb-3 tracking-wide">Infinity Pool</h3>
+                <p class="text-stone-500 text-sm leading-relaxed">Piscina climatizada con vistas espectaculares y servicio de bar lounge.</p>
+            </div>
+            <div class="p-8 border border-stone-200 bg-white shadow-sm hover:shadow-md transition duration-300">
+                <span class="text-stone-300 font-serif text-4xl block mb-2 font-light">04</span>
+                <h3 class="font-serif text-lg text-stone-900 font-medium mb-3 tracking-wide">Transfers Privados</h3>
+                <p class="text-stone-500 text-sm leading-relaxed">Servicio de transporte de lujo directo desde y hacia el aeropuerto.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-stone-900 text-white px-6">
+        <div class="max-w-4xl mx-auto text-center">
+            <span class="text-amber-400 text-xs tracking-widest uppercase font-semibold block mb-4">Opiniones de Huéspedes</span>
+            <p class="font-serif text-2xl md:text-3xl font-light italic leading-relaxed mb-8">"Una experiencia absolutamente perfecta. La atención al detalle, la amabilidad del personal y la belleza de las instalaciones superaron por mucho nuestras expectativas."</p>
+            <div class="text-amber-400 mb-2">★★★★★</div>
+            <span class="text-xs tracking-widest uppercase font-semibold block">Victoria & Carlos M.</span>
+        </div>
+    </section>
+
+    <section id="contacto" class="py-24 bg-white px-6">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16">
+            <div>
+                <span class="text-amber-600 text-xs tracking-widest uppercase font-semibold block mb-2">Ubicación y Datos</span>
+                <h2 class="font-serif text-4xl text-stone-900 font-light mb-6">Planifique su Estancia</h2>
+                <p class="text-stone-600 mb-8">Rellene el formulario para consultar disponibilidad. Si lo prefiere, puede hacer click en el botón inferior para chatear con un agente directamente por WhatsApp.</p>
+                
+                <div class="space-y-4 text-stone-600 text-sm mb-8">
+                    <p>📍 <strong>Dirección:</strong> San Juan del Sur, Rivas, Nicaragua.</p>
+                    <p>📞 <strong>Teléfono:</strong> +505 1234 5678</p>
+                    <p>✉️ <strong>Email:</strong> reservas@grandhorizon.com</p>
+                </div>
+
+                <a href="https://wa.me/50512345678?text=Hola,%20tengo%20una%20consulta%20sobre%20el%20hotel." target="_blank" class="inline-block bg-[#25D366] hover:bg-[#20ba5a] text-white text-xs tracking-widest uppercase font-semibold px-6 py-4 transition duration-300">
+                    Chatear con un Asesor
+                </a>
+            </div>
+            
+            <div class="bg-stone-50 p-8 border border-stone-200">
+                <form action="#" method="POST" class="space-y-6">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs uppercase tracking-wider font-semibold mb-2">Nombre</label>
+                            <input type="text" class="w-full p-3 border border-stone-300 text-sm focus:outline-amber-600 bg-white" required>
+                        </div>
+                        <div>
+                            <label class="block text-xs uppercase tracking-wider font-semibold mb-2">Email</label>
+                            <input type="email" class="w-full p-3 border border-stone-300 text-sm focus:outline-amber-600 bg-white" required>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs uppercase tracking-wider font-semibold mb-2">Check-In</label>
+                            <input type="date" class="w-full p-3 border border-stone-300 text-sm focus:outline-amber-600 bg-white" required>
+                        </div>
+                        <div>
+                            <label class="block text-xs uppercase tracking-wider font-semibold mb-2">Check-Out</label>
+                            <input type="date" class="w-full p-3 border border-stone-300 text-sm focus:outline-amber-600 bg-white" required>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-xs uppercase tracking-wider font-semibold mb-2">Tipo de Habitación</label>
+                        <select class="w-full p-3 border border-stone-300 text-sm focus:outline-amber-600 bg-white">
+                            <option>Deluxe King Suite (C$ 6,500)</option>
+                            <option>Grand Ocean Suite (C$ 9,100)</option>
+                            <option>Presidential Penthouse (C$ 16,400)</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="w-full bg-stone-900 hover:bg-amber-700 text-white text-xs tracking-widest uppercase font-semibold py-4 transition duration-300">Solicitar Presupuesto</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-stone-900 text-stone-400 py-12 px-6 border-t border-stone-800 text-center text-xs tracking-wider">
+        <p class="mb-4 font-serif text-white text-lg tracking-widest">GRAND HORIZON</p>
+        <p>&copy; 2026 Grand Horizon Resort. Todos los derechos reservados.</p>
+    </footer>
+
+</body>
+</html>
