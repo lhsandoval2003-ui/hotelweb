@@ -3,712 +3,966 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hotel Boutique | Nombre de tu Hotel</title>
-    
+    <title>Hotel - Reserva tu Estadía</title>
+    <!-- Fuente Google Fonts (Plus Jakarta Sans) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
     <style>
         /* ==========================================================================
-           CONFIGURACIÓN Y VARIABLES (Cambia los colores principales aquí)
+           1. ESTILOS BASE Y VARIABLES CSS (MODO OSCURO ELEGANTE)
            ========================================================================== */
         :root {
-            --bg-principal: #0b0c10;     /* Fondo oscuro profundo */
-            --bg-secundario: #1f2833;    /* Fondo de tarjetas y secciones */
-            --dorado: #c5a880;           /* Color de acento premium */
-            --dorado-hover: #e5c59e;     /* Dorado al pasar el cursor */
-            --texto-claro: #f5f5f5;      /* Color de texto principal */
-            --texto-mutado: #9fa4a6;     /* Texto secundario o descripciones */
-            --fuente-titulos: 'Playfair Display', serif;
-            --fuente-base: 'Poppins', sans-serif;
-            --transicion: all 0.3s ease;
+            --bg-main: #0B0F17;         /* Fondo principal oscuro profundo */
+            --bg-card: #161C28;         /* Fondo de tarjetas y contenedores */
+            --accent: #D4AF37;          /* Dorado elegante / Accent */
+            --accent-hover: #E6C251;    /* Hover para botones dorados */
+            --text-primary: #F3F4F6;    /* Texto principal ultra claro */
+            --text-muted: #9CA3AF;      /* Texto secundario / leyendas */
+            --border: #232D3F;          /* Bordes sutiles */
+            --whatsapp: #25D366;        /* Verde WhatsApp */
+            --email-btn: #3B82F6;       /* Azul Correo */
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* RESET BÁSICO */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
             scroll-behavior: smooth;
         }
 
         body {
-            font-family: var(--fuente-base);
-            background-color: var(--bg-principal);
-            color: var(--texto-claro);
+            background-color: var(--bg-main);
+            color: var(--text-primary);
             line-height: 1.6;
             overflow-x: hidden;
         }
 
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-            object-fit: cover;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        /* COMPONENTES REUTILIZABLES */
-        .contenedor {
+        /* Tipografía y Utilitarios */
+        h1, h2, h3 { font-weight: 700; letter-spacing: -0.02em; }
+        a { text-decoration: none; color: inherit; }
+        img { width: 100%; height: auto; display: block; object-fit: cover; }
+        
+        .container {
             width: 90%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 80px 0;
         }
 
-        .titulo-seccion {
-            font-family: var(--fuente-titulos);
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 10px;
-            letter-spacing: 1px;
+        .section-padding {
+            padding: 90px 0;
         }
 
-        .subtitulo-seccion {
+        .section-header {
             text-align: center;
-            color: var(--dorado);
-            font-weight: 300;
-            margin-bottom: 50px;
+            max-width: 600px;
+            margin: 0 auto 50px auto;
+        }
+
+        .section-header span {
+            color: var(--accent);
             text-transform: uppercase;
+            font-size: 0.85rem;
+            font-weight: 600;
             letter-spacing: 2px;
-            font-size: 0.9rem;
         }
 
+        .section-header h2 {
+            font-size: 2.2rem;
+            margin-top: 8px;
+        }
+
+        /* Botones */
         .btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
             padding: 14px 28px;
-            border-radius: 4px;
+            border-radius: var(--radius-md);
             font-weight: 600;
-            transition: var(--transicion);
+            font-size: 0.95rem;
             cursor: pointer;
+            transition: var(--transition);
             border: none;
-            text-transform: uppercase;
-            font-size: 0.85rem;
-            letter-spacing: 1px;
         }
 
-        .btn-dorado {
-            background-color: var(--dorado);
-            color: var(--bg-principal);
+        .btn-primary {
+            background-color: var(--accent);
+            color: #000;
         }
 
-        .btn-dorado:hover {
-            background-color: var(--dorado-hover);
+        .btn-primary:hover {
+            background-color: var(--accent-hover);
             transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.2);
         }
 
-        .btn-wsp {
-            background-color: #25d366;
+        .btn-whatsapp {
+            background-color: var(--whatsapp);
             color: #fff;
         }
 
-        .btn-wsp:hover {
+        .btn-whatsapp:hover {
             background-color: #20ba5a;
             transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.25);
         }
 
-        /* BOTÓN FLOTANTE WHATSAPP */
-        .wsp-flotante {
+        .btn-email {
+            background-color: var(--email-btn);
+            color: #fff;
+        }
+
+        .btn-email:hover {
+            background-color: #2563eb;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.25);
+        }
+
+        /* Selector de Idioma */
+        .lang-switch {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+            padding: 6px 12px;
+            border-radius: var(--radius-md);
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .lang-switch:hover {
+            border-color: var(--accent);
+        }
+
+        /* ==========================================================================
+           2. NAVEGACIÓN Y NAVBAR
+           ========================================================================== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(11, 15, 23, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            padding: 18px 0;
+        }
+
+        .navbar-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .logo span { color: var(--accent); }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* ==========================================================================
+           3. SECCIÓN HERO
+           ========================================================================== */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 120px 20px 60px 20px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(11, 15, 23, 0.5) 0%, rgba(11, 15, 23, 0.95) 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+        }
+
+        .hero-badge {
+            background: rgba(212, 175, 55, 0.15);
+            color: var(--accent);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            line-height: 1.15;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 35px;
+            font-weight: 300;
+        }
+
+        /* ==========================================================================
+           4. SECCIÓN HABITACIONES
+           ========================================================================== */
+        .rooms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .room-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .room-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(212, 175, 55, 0.4);
+        }
+
+        .room-image {
+            height: 240px;
+            position: relative;
+        }
+
+        .room-price-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(11, 15, 23, 0.85);
+            backdrop-filter: blur(8px);
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-weight: 700;
+            color: var(--accent);
+            border: 1px solid var(--border);
+        }
+
+        .room-info {
+            padding: 25px;
+        }
+
+        .room-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .room-info p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        /* ==========================================================================
+           5. SECCIÓN GALERÍA
+           ========================================================================== */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            height: 250px;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.08);
+        }
+
+        /* ==========================================================================
+           6. SECCIÓN UBICACIÓN & RESEÑAS
+           ========================================================================== */
+        .location-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            padding: 30px;
+            border: 1px solid var(--border);
+        }
+
+        .map-frame {
+            width: 100%;
+            height: 350px;
+            border-radius: var(--radius-md);
+            border: none;
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .review-card {
+            background: var(--bg-card);
+            padding: 30px;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border);
+        }
+
+        .stars { color: var(--accent); margin-bottom: 15px; font-size: 1.1rem; }
+
+        .review-card p {
+            color: var(--text-muted);
+            font-style: italic;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+
+        .reviewer-name {
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        /* ==========================================================================
+           7. FORMULARIO DE RESERVA
+           ========================================================================== */
+        .booking-section {
+            background: linear-gradient(180deg, var(--bg-main) 0%, var(--bg-card) 100%);
+        }
+
+        .booking-form {
+            max-width: 700px;
+            margin: 0 auto;
+            background: var(--bg-card);
+            padding: 40px;
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .form-group.full-width {
+            grid-column: span 2;
+        }
+
+        .form-group label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            background-color: var(--bg-main);
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+            padding: 12px 16px;
+            border-radius: var(--radius-md);
+            font-size: 0.95rem;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--accent);
+        }
+
+        .booking-actions {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        /* ==========================================================================
+           8. BOTÓN FLOTANTE DE WHATSAPP Y FOOTER
+           ========================================================================== */
+        .whatsapp-float {
             position: fixed;
             bottom: 30px;
             right: 30px;
-            background-color: #25d366;
-            color: white;
             width: 60px;
             height: 60px;
+            background-color: var(--whatsapp);
+            color: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 30px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-            z-index: 1000;
-            transition: var(--transicion);
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+            z-index: 999;
+            transition: var(--transition);
         }
 
-        .wsp-flotante:hover {
-            transform: scale(1.1);
-            background-color: #20ba5a;
-        }
-
-        /* ==========================================================================
-           1. HERO SECCIÓN
-           ========================================================================== */
-        .hero {
-            position: relative;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            /* EDITAR: Cambia el URL por el de la foto principal de fondo */
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.7)), 
-                        url('https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
-        }
-
-        .hero-contenido {
-            padding: 20px;
-            max-width: 800px;
-        }
-
-        .hero-contenido h1 {
-            font-family: var(--fuente-titulos);
-            font-size: 4rem;
-            margin-bottom: 15px;
-            font-weight: 400;
-            letter-spacing: 2px;
-        }
-
-        .hero-contenido p {
-            font-size: 1.2rem;
-            color: var(--texto-mutado);
-            margin-bottom: 35px;
-            font-weight: 300;
-            letter-spacing: 1px;
-        }
-
-        /* ==========================================================================
-           2. SERVICIOS (ÍCONOS)
-           ========================================================================== */
-        .servicios-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            text-align: center;
-        }
-
-        .servicio-card {
-            background-color: var(--bg-secundario);
-            padding: 40px 20px;
-            border-radius: 4px;
-            transition: var(--transicion);
-            border: 1px solid rgba(197, 168, 128, 0.1);
-        }
-
-        .servicio-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--dorado);
-        }
-
-        .servicio-card i {
-            font-size: 2.5rem;
-            color: var(--dorado);
-            margin-bottom: 15px;
-        }
-
-        .servicio-card h3 {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-
-        /* ==========================================================================
-           3. OFERTA ESPECIAL
-           ========================================================================== */
-        .oferta-banner {
-            background: linear-gradient(rgba(11, 12, 16, 0.85), rgba(11, 12, 16, 0.85)),
-                        url('https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
-            padding: 80px 20px;
-            text-align: center;
-            border-top: 1px solid var(--dorado);
-            border-bottom: 1px solid var(--dorado);
-        }
-
-        .oferta-contenido {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .oferta-contenido .tag {
-            color: var(--bg-principal);
-            background-color: var(--dorado);
-            padding: 4px 12px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            display: inline-block;
-            margin-bottom: 15px;
-            border-radius: 2px;
-        }
-
-        .oferta-contenido h2 {
-            font-family: var(--fuente-titulos);
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-        }
-
-        /* ==========================================================================
-           4. SECCIÓN HABITACIONES (Efectos Hover Premium)
-           ========================================================================== */
-        .habitaciones-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 40px;
-        }
-
-        .habitacion-card {
-            background-color: var(--bg-secundario);
-            border-radius: 4px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            transition: var(--transicion);
-            display: flex;
-            flex-direction: column;
-        }
-
-        .habitacion-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .hab-img-wrapper {
-            position: relative;
-            height: 250px;
-            overflow: hidden;
-        }
-
-        .hab-img-wrapper img {
-            width: 100%;
-            height: 100%;
-            transition: transform 0.5s ease;
-        }
-
-        .habitacion-card:hover .hab-img-wrapper img {
+        .whatsapp-float:hover {
             transform: scale(1.1);
         }
 
-        .hab-precio {
-            position: absolute;
-            bottom: 15px;
-            left: 15px;
-            background-color: rgba(11, 12, 16, 0.85);
-            padding: 8px 15px;
-            border-left: 3px solid var(--dorado);
-            font-weight: 600;
-            font-size: 0.95rem;
+        .whatsapp-float svg {
+            width: 32px;
+            height: 32px;
+            fill: currentColor;
         }
 
-        .hab-info {
-            padding: 30px;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-        }
-
-        .hab-info h3 {
-            font-family: var(--fuente-titulos);
-            font-size: 1.6rem;
-            margin-bottom: 15px;
-            font-weight: 400;
-        }
-
-        .hab-caracteristicas {
-            list-style: none;
-            margin-bottom: 30px;
-            color: var(--texto-mutado);
-            font-size: 0.9rem;
-        }
-
-        .hab-caracteristicas li {
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .hab-caracteristicas li i {
-            color: var(--dorado);
-            font-size: 0.8rem;
-        }
-
-        .hab-info .btn {
-            margin-top: auto;
-            width: 100%;
-        }
-
-        /* ==========================================================================
-           5. GALERÍA (Grid elegante)
-           ========================================================================== */
-        .galeria-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px;
-        }
-
-        .galeria-item {
-            position: relative;
-            height: 220px;
-            overflow: hidden;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        .galeria-item img {
-            width: 100%;
-            height: 100%;
-            transition: var(--transicion);
-        }
-
-        .galeria-overlay {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(197, 168, 128, 0.4);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: var(--transicion);
-        }
-
-        .galeria-overlay i {
-            font-size: 2rem;
-            color: var(--bg-principal);
-            transform: scale(0.5);
-            transition: var(--transicion);
-        }
-
-        .galeria-item:hover img {
-            transform: scale(1.1);
-        }
-
-        .galeria-item:hover .galeria-overlay {
-            opacity: 1;
-        }
-
-        .galeria-item:hover .galeria-overlay i {
-            transform: scale(1);
-        }
-
-        /* ==========================================================================
-           6. UBICACIÓN Y CONTACTO
-           ========================================================================== */
-        .contacto-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 50px;
-            align-items: start;
-        }
-
-        .info-contacto h3 {
-            font-family: var(--fuente-titulos);
-            font-size: 1.8rem;
-            margin-bottom: 25px;
-            font-weight: 400;
-        }
-
-        .contacto-bloque {
-            display: flex;
-            align-items: flex-start;
-            gap: 15px;
-            margin-bottom: 25px;
-        }
-
-        .contacto-bloque i {
-            color: var(--dorado);
-            font-size: 1.3rem;
-            margin-top: 5px;
-        }
-
-        .contacto-bloque p strong {
-            display: block;
-            color: var(--dorado);
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 2px;
-        }
-
-        .mapa-wrapper {
-            position: relative;
-            width: 100%;
-            height: 350px;
-            border-radius: 4px;
-            overflow: hidden;
-            border: 1px solid rgba(197, 168, 128, 0.2);
-        }
-
-        .mapa-wrapper iframe {
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
-
-        /* ==========================================================================
-           7. FOOTER
-           ========================================================================== */
         footer {
-            background-color: #050608;
+            border-top: 1px solid var(--border);
             padding: 40px 0;
             text-align: center;
-            border-top: 1px solid rgba(250,250,250, 0.05);
-            font-size: 0.9rem;
-            color: var(--texto-mutado);
+            color: var(--text-muted);
+            font-size: 0.85rem;
         }
 
-        footer p {
-            margin-bottom: 10px;
-        }
-
-        .footer-socials {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 15px;
-        }
-
-        .footer-socials a {
-            font-size: 1.2rem;
-            transition: var(--transicion);
-        }
-
-        .footer-socials a:hover {
-            color: var(--dorado);
-        }
-
-        /* RESPONSIVE */
+        /* Responsive UI */
         @media (max-width: 768px) {
-            .hero-contenido h1 { font-size: 2.8rem; }
-            .contenedor { padding: 50px 0; }
-            .titulo-seccion { font-size: 2rem; }
+            .hero h1 { font-size: 2.3rem; }
+            .location-container { grid-template-columns: 1fr; }
+            .form-grid { grid-template-columns: 1fr; }
+            .form-group.full-width { grid-column: span 1; }
+            .booking-actions { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
         }
     </style>
 </head>
 <body>
 
-    <a href="#" class="wsp-flotante btn-wsp-trigger" target="_blank" aria-label="Contacto por WhatsApp">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="container navbar-container">
+            <a href="#" class="logo" id="nav-logo">Hotel<span>Demo</span></a>
+            <div class="nav-right">
+                <ul class="nav-links">
+                    <li><a href="#habitaciones" data-i18n="nav-rooms">Habitaciones</a></li>
+                    <li><a href="#galeria" data-i18n="nav-gallery">Galería</a></li>
+                    <li><a href="#ubicacion" data-i18n="nav-location">Ubicación</a></li>
+                    <li><a href="#resenas" data-i18n="nav-reviews">Reseñas</a></li>
+                    <li><a href="#reservar" data-i18n="nav-book">Reservar</a></li>
+                </ul>
+                <!-- Selector de Idioma -->
+                <select id="lang-select" class="lang-switch">
+                    <option value="es">ES 🇪🇸</option>
+                    <option value="en">EN 🇺🇸</option>
+                </select>
+            </div>
+        </div>
+    </nav>
 
-    <section class="hero">
-        <div class="hero-contenido">
-            <h1>Nirvana Boutique Hotel</h1>
-            <p>Descansa en un oasis de lujo, exclusividad y comodidad absoluta.</p>
-            <a href="#" class="btn btn-dorado btn-wsp-trigger" data-msj="Hola, me gustaría obtener más información y consultar disponibilidad por favor.">
-                <i class="fa-solid fa-calendar-check"></i> Reservar por WhatsApp
+    <!-- HERO -->
+    <section class="hero" id="hero-bg">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <span class="hero-badge" id="hero-location-tag">Nicaragua</span>
+            <h1 id="hero-title">Nombre del Hotel</h1>
+            <p id="hero-subtitle">Cargando experiencia de lujo y confort...</p>
+            <a href="#reservar" class="btn btn-whatsapp" data-i18n="hero-btn">
+                Reservar por WhatsApp
             </a>
         </div>
     </section>
 
-    <section class="contenedor">
-        <h2 class="titulo-seccion">Experiencias Exclusivas</h2>
-        <p class="subtitulo-seccion">Diseñado para tu máximo confort</p>
-        
-        <div class="servicios-grid">
-            <div class="servicio-card">
-                <i class="fa-solid fa-water-ladder"></i>
-                <h3>Piscina Infinity</h3>
-                <p style="color: var(--texto-mutado); font-size: 0.85rem; margin-top:5px;">Climatizada y con vistas panorámicas.</p>
+    <!-- HABITACIONES -->
+    <section class="section-padding" id="habitaciones">
+        <div class="container">
+            <div class="section-header">
+                <span data-i18n="rooms-badge">Hospedaje Premium</span>
+                <h2 data-i18n="rooms-title">Nuestras Habitaciones</h2>
             </div>
-            <div class="servicio-card">
-                <i class="fa-solid fa-mug-saucer"></i>
-                <h3>Desayuno Gourmet</h3>
-                <p style="color: var(--texto-mutado); font-size: 0.85rem; margin-top:5px;">Incluido diariamente con insumos locales.</p>
-            </div>
-            <div class="servicio-card">
-                <i class="fa-solid fa-wifi"></i>
-                <h3>Wi-Fi de Alta Velocidad</h3>
-                <p style="color: var(--texto-mutado); font-size: 0.85rem; margin-top:5px;">Fibra óptica ideal para nómadas digitales.</p>
-            </div>
-            <div class="servicio-card">
-                <i class="fa-solid fa-square-parking"></i>
-                <h3>Parqueo Privado</h3>
-                <p style="color: var(--texto-mutado); font-size: 0.85rem; margin-top:5px;">Seguridad las 24 horas del día.</p>
+            <div class="rooms-grid" id="rooms-container">
+                <!-- Se genera dinámicamente desde JS -->
             </div>
         </div>
     </section>
 
-    <section class="oferta-banner">
-        <div class="oferta-contenido">
-            <span class="tag">Temporada Limitada</span>
-            <h2>Escapada Romántica de Fin de Semana</h2>
-            <p style="color: var(--texto-claro); margin-bottom: 25px; font-weight: 300;">
-                Disfruta de un 20% de descuento en estancias de 3 noches, botella de vino de bienvenida y un masaje en pareja de cortesía.
-            </p>
-            <a href="#" class="btn btn-dorado btn-wsp-trigger" data-msj="Hola! Me interesa la oferta especial de Escapada Romántica.">
-                Aprovechar Oferta
-            </a>
-        </div>
-    </section>
-
-    <section class="contenedor">
-        <h2 class="titulo-seccion">Nuestras Habitaciones</h2>
-        <p class="subtitulo-seccion">Elige el espacio perfecto para ti</p>
-
-        <div class="habitaciones-grid">
-
-            <div class="habitacion-card">
-                <div class="hab-img-wrapper">
-                    <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=600&q=80" alt="Suite Deluxe">
-                    <div class="hab-precio">$120 / Noche</div>
-                </div>
-                <div class="hab-info">
-                    <h3>Suite Deluxe</h3>
-                    <ul class="hab-caracteristicas">
-                        <li><i class="fa-solid fa-check"></i> Cama King Size</li>
-                        <li><i class="fa-solid fa-check"></i> Vista a la montaña / balcón</li>
-                        <li><i class="fa-solid fa-check"></i> Aire acondicionado y Smart TV</li>
-                        <li><i class="fa-solid fa-check"></i> Minibar Premium premium</li>
-                    </ul>
-                    <button class="btn btn-dorado btn-reserva" data-hab="Suite Deluxe">Reservar Habitación</button>
-                </div>
+    <!-- GALERÍA -->
+    <section class="section-padding" id="galeria" style="background: var(--bg-card);">
+        <div class="container">
+            <div class="section-header">
+                <span data-i18n="gallery-badge">Explora la Propiedad</span>
+                <h2 data-i18n="gallery-title">Galería de fotos</h2>
             </div>
-            <div class="habitacion-card">
-                <div class="hab-img-wrapper">
-                    <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=600&q=80" alt="Master Suite con Jacuzzi">
-                    <div class="hab-precio">$180 / Noche</div>
-                </div>
-                <div class="hab-info">
-                    <h3>Master Suite & Jacuzzi</h3>
-                    <ul class="hab-caracteristicas">
-                        <li><i class="fa-solid fa-check"></i> Cama King Size Ultra Confort</li>
-                        <li><i class="fa-solid fa-check"></i> Jacuzzi privado hidromasaje</li>
-                        <li><i class="fa-solid fa-check"></i> Terraza privada con vistas directas</li>
-                        <li><i class="fa-solid fa-check"></i> Desayuno servido en la habitación</li>
-                    </ul>
-                    <button class="btn btn-dorado btn-reserva" data-hab="Master Suite & Jacuzzi">Reservar Habitación</button>
-                </div>
-            </div>
-            <div class="habitacion-card">
-                <div class="hab-img-wrapper">
-                    <img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=600&q=80" alt="Estudio Familiar">
-                    <div class="hab-precio">$220 / Noche</div>
-                </div>
-                <div class="hab-info">
-                    <h3>Premium Family Villa</h3>
-                    <ul class="hab-caracteristicas">
-                        <li><i class="fa-solid fa-check"></i> Capacidad de hasta 5 personas</li>
-                        <li><i class="fa-solid fa-check"></i> 2 habitaciones conectadas</li>
-                        <li><i class="fa-solid fa-check"></i> Cocina equipada completa</li>
-                        <li><i class="fa-solid fa-check"></i> Acceso directo a jardines</li>
-                    </ul>
-                    <button class="btn btn-dorado btn-reserva" data-hab="Premium Family Villa">Reservar Habitación</button>
-                </div>
-            </div>
-            </div>
-    </section>
-
-    <section class="contenedor">
-        <h2 class="titulo-seccion">Un Vistazo al Paraíso</h2>
-        <p class="subtitulo-seccion">Explora nuestras instalaciones</p>
-
-        <div class="galeria-grid">
-            <div class="galeria-item">
-                <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=500&q=80" alt="Instalaciones 1">
-                <div class="galeria-overlay"><i class="fa-brands fa-instagram"></i></div>
-            </div>
-            <div class="galeria-item">
-                <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=500&q=80" alt="Instalaciones 2">
-                <div class="galeria-overlay"><i class="fa-brands fa-instagram"></i></div>
-            </div>
-            <div class="galeria-item">
-                <img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&w=500&q=80" alt="Instalaciones 3">
-                <div class="galeria-overlay"><i class="fa-brands fa-instagram"></i></div>
-            </div>
-            <div class="galeria-item">
-                <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=500&q=80" alt="Instalaciones 4">
-                <div class="galeria-overlay"><i class="fa-brands fa-instagram"></i></div>
+            <div class="gallery-grid" id="gallery-container">
+                <!-- Se genera dinámicamente desde JS -->
             </div>
         </div>
     </section>
 
-    <section class="contenedor" style="border-top: 1px solid rgba(250,250,250, 0.05);">
-        <div class="contacto-container">
-            
-            <div class="info-contacto">
-                <h3>Contacto & Ubicación</h3>
-                
-                <div class="contacto-bloque">
-                    <i class="fa-solid fa-location-dot"></i>
-                    <p><strong>Dirección</strong>Av. del Lujo 777, Zona Hotelera, Ocotal, Nicaragua.</p>
-                </div>
-
-                <div class="contacto-bloque">
-                    <i class="fa-solid fa-clock"></i>
-                    <p><strong>Horario de Recepción</strong>Abierto 24 horas | Check-in: 3:00 PM - Check-out: 11:00 AM</p>
-                </div>
-
-                <div class="contacto-bloque">
-                    <i class="fa-solid fa-phone"></i>
-                    <p><strong>Teléfono Directo</strong>+505 8888-8888</p>
-                </div>
-
-                <a href="#" class="btn btn-wsp btn-wsp-trigger" data-msj="Hola, estoy viendo su sitio web y tengo algunas preguntas generales.">
-                    <i class="fab fa-whatsapp"></i> Chatear con Recepción
-                </a>
+    <!-- UBICACIÓN -->
+    <section class="section-padding" id="ubicacion">
+        <div class="container">
+            <div class="section-header">
+                <span data-i18n="location-badge">Encuéntranos</span>
+                <h2 data-i18n="location-title">Ubicación Privilegiada</h2>
             </div>
-
-            <div class="mapa-wrapper">
-                <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15448.468205777855!2d-86.4815456!3d13.6215354!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f7188151c41fb77%3A0xc62261ea763784bd!2sOcotal!5e0!3m2!1ses!2sni!4v1710000000000!5m2!1ses!2sni" 
-                    allowfullscreen="" 
-                    loading="lazy" 
-                    referrerpolicy="no-referrer-when-downgrade">
-                </iframe>
+            <div class="location-container">
+                <div>
+                    <h3 style="font-size: 1.5rem; margin-bottom: 15px;" data-i18n="location-subtitle">Dirección</h3>
+                    <p style="color: var(--text-muted); margin-bottom: 20px;" id="location-address">Cargando...</p>
+                    <p style="color: var(--text-muted);" data-i18n="location-desc">Ubicado estratégicamente cerca de las principales atracciones para garantizar una estadía cómoda y accesible.</p>
+                </div>
+                <iframe class="map-frame" id="map-iframe" src="" loading="lazy"></iframe>
             </div>
-
         </div>
     </section>
 
+    <!-- RESEÑAS -->
+    <section class="section-padding" id="resenas" style="background: var(--bg-card);">
+        <div class="container">
+            <div class="section-header">
+                <span data-i18n="reviews-badge">Experiencias Reales</span>
+                <h2 data-i18n="reviews-title">Lo que dicen nuestros huéspedes</h2>
+            </div>
+            <div class="reviews-grid" id="reviews-container">
+                <!-- Se genera dinámicamente desde JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- FORMULARIO DE RESERVA -->
+    <section class="section-padding booking-section" id="reservar">
+        <div class="container">
+            <div class="section-header">
+                <span data-i18n="booking-badge">Reserva Directa</span>
+                <h2 data-i18n="booking-title">Solicita tu Reserva</h2>
+            </div>
+            <form class="booking-form" id="booking-form">
+                <div class="form-grid">
+                    <div class="form-group full-width">
+                        <label for="room-select" data-i18n="lbl-room">Habitación Seleccionada</label>
+                        <select id="room-select">
+                            <!-- Se llena automáticamente con la lista de habitaciones -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="client-name" data-i18n="lbl-name">Nombre Completo</label>
+                        <input type="text" id="client-name" required placeholder="Ej: Maria Lopez">
+                    </div>
+                    <div class="form-group">
+                        <label for="guests" data-i18n="lbl-guests">Número de Personas</label>
+                        <select id="guests">
+                            <option value="1 Persona" data-i18n="opt-1p">1 Persona</option>
+                            <option value="2 Personas" selected data-i18n="opt-2p">2 Personas</option>
+                            <option value="3-4 Personas" data-i18n="opt-3p">3-4 Personas</option>
+                            <option value="Grupo 5+" data-i18n="opt-group">Grupo 5+</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="date-in" data-i18n="lbl-datein">Fecha de Entrada</label>
+                        <input type="date" id="date-in" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="date-out" data-i18n="lbl-dateout">Fecha de Salida</label>
+                        <input type="date" id="date-out" required>
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="extra-message" data-i18n="lbl-msg">Mensaje Adicional / Peticiones Especiales</label>
+                        <textarea id="extra-message" rows="3" placeholder="Ej: Habitación en piso alto, llegada tarde..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Botones de Acción (WhatsApp y Email) -->
+                <div class="booking-actions">
+                    <button type="button" onclick="sendBooking('whatsapp')" class="btn btn-whatsapp" data-i18n="btn-confirm-wa">
+                        Reservar vía WhatsApp
+                    </button>
+                    <button type="button" onclick="sendBooking('email')" class="btn btn-email" data-i18n="btn-confirm-email">
+                        Reservar vía Correo
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
     <footer>
-        <div class="contenedor" style="padding: 0;">
-            <p>&copy; 2026 Nirvana Boutique Hotel. Todos los derechos reservados.</p>
-            <p style="font-size: 0.75rem; color: #555;">Diseño Exclusivo y Confort Premium.</p>
-            
-            <div class="footer-socials">
-                <a href="#" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-                <a href="#" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="#" target="_blank" aria-label="TripAdvisor"><i class="fab fa-tripadvisor"></i></a>
-            </div>
+        <div class="container">
+            <p id="footer-text">&copy; 2026 Hotel Demo Nicaragua. Todos los derechos reservados.</p>
         </div>
     </footer>
 
+    <!-- BOTÓN FLOTANTE WHATSAPP -->
+    <a href="#" id="float-wa-btn" class="whatsapp-float" target="_blank" aria-label="Contacto por WhatsApp">
+        <svg viewBox="0 0 32 32">
+            <path d="M16 2a13 13 0 0 0-11 19.8L3 29l7.3-1.9A13 13 0 1 0 16 2zm0 23.8a10.8 10.8 0 0 1-5.5-1.5l-.4-.2-4.1 1.1 1.1-4-.3-.4A10.8 10.8 0 1 1 16 25.8zm5.9-8.1c-.3-.2-1.9-.9-2.2-1s-.5-.2-.7.2-.8 1-.9 1.2-.3.2-.6 0a8 8 0 0 1-2.4-1.5 8.9 8.9 0 0 1-1.7-2.1c-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.4.3-.6s0-.4 0-.5c-.2-.2-.7-1.7-1-2.3-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4A3.8 3.8 0 0 0 9.5 12a6.6 6.6 0 0 0 1.4 3.5 15.2 15.2 0 0 0 5.8 5.1c2.2.9 2.7.8 3.2.7a2.7 2.7 0 0 0 1.8-1.3c.2-.4.2-.8.1-.9s-.3-.2-.6-.3z"/>
+        </svg>
+    </a>
+
+    <!-- ==========================================================================
+       9. CONFIGURACIÓN EDITABLE Y LÓGICA JAVASCRIPT
+       ========================================================================== -->
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            
-            // CONFIGURACIÓN CENTRALIZADA DE WHATSAPP
-            // ====================================================================
-            // EDITAR AQUÍ: Código de país + número de teléfono (sin espacios ni símbolos)
-            const NUMERO_TELEFONO = "50588888888"; 
-            // ====================================================================
+        /* 
+         * =====================================================================
+         * ⚙️ SECCIÓN DE VARIABLES EDITABLES (EDITA AQUÍ TUS DATOS DEL HOTEL)
+         * =====================================================================
+         */
+        const HOTEL_CONFIG = {
+            nombre: "Hotel Boutique Mansión Real",
+            whatsapp: "50585048380",
+            email: "reservas@mansionreal.com", // 📧 Correo editable del hotel
+            ubicaciónTexto: "Granada, Nicaragua (Calle La Calzada, 2 cuadras al lago)",
+            heroImagen: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1600&q=80",
+            mapaEmbedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3903.626279144458!2d-85.9558230240954!3d11.931086388296338!2m3!1f0!0f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f740751912f20c1%3A0xb35a3eb4232bbd2c!2sGranada!52sNicaragua!5e0!3m2!1ses!2s!4v1700000000000!5m2!1ses!2s",
 
-
-            // Base URL para API de WhatsApp
-            const baseWspUrl = `https://wa.me/${NUMERO_TELEFONO}`;
-
-            // Configurar botones generales con atributos de mensaje directo (data-msj)
-            const botonesWspGenerales = document.querySelectorAll('.btn-wsp-trigger');
-            botonesWspGenerales.forEach(boton => {
-                let mensaje = boton.getAttribute('data-msj');
-                if(mensaje) {
-                    boton.href = `${baseWspUrl}?text=${encodeURIComponent(mensaje)}`;
-                } else {
-                    // Si no tiene mensaje predeterminado (como el botón flotante) envía un saludo por defecto
-                    boton.href = `${baseWspUrl}?text=${encodeURIComponent('Hola! Me gustaría obtener más información sobre el hotel.')}`;
+            habitaciones: [
+                {
+                    id: "hab-estandar",
+                    titulo: { es: "Habitación Estándar", en: "Standard Room" },
+                    precio: "$45 / noche",
+                    descripcion: {
+                        es: "Cómoda habitación equipada con cama matrimonial, aire acondicionado, WiFi de alta velocidad y baño privado.",
+                        en: "Comfortable room equipped with a double bed, air conditioning, high-speed WiFi, and private bathroom."
+                    },
+                    imagen: "https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=800&q=80"
+                },
+                {
+                    id: "hab-doble",
+                    titulo: { es: "Doble Deluxe", en: "Deluxe Double" },
+                    precio: "$70 / noche",
+                    descripcion: {
+                        es: "Espaciosa habitación con dos camas Queen, balcón privado con vista al jardín y minibar incluido.",
+                        en: "Spacious room with two Queen beds, private balcony with garden view, and minibar included."
+                    },
+                    imagen: "https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=800&q=80"
+                },
+                {
+                    id: "hab-suite",
+                    titulo: { es: "Suite Ejecutiva", en: "Executive Suite" },
+                    precio: "$110 / noche",
+                    descripcion: {
+                        es: "Cama King-size, área de estar premium, tina de hidromasaje y servicio a la habitación personalizado.",
+                        en: "King-size bed, premium seating area, whirlpool tub, and personalized room service."
+                    },
+                    imagen: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=800&q=80"
                 }
-            });
+            ],
 
-            // Configurar botones específicos de la sección "Habitaciones"
-            const botonesReserva = document.querySelectorAll('.btn-reserva');
-            botonesReserva.forEach(boton => {
-                boton.addEventListener('click', function() {
-                    const nombreHabitacion = this.getAttribute('data-hab');
-                    const mensajeAutomatizado = `Hola, quiero reservar la habitación [${nombreHabitacion}]`;
-                    
-                    // Abrir la ventana de WhatsApp directamente con el texto formateado
-                    window.open(`${baseWspUrl}?text=${encodeURIComponent(mensajeAutomatizado)}`, '_blank');
-                });
+            galeria: [
+                "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=600&q=80",
+                "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=600&q=80",
+                "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=600&q=80",
+                "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=600&q=80"
+            ],
+
+            resenas: [
+                {
+                    nombre: "Carlos Mendoza",
+                    estrellas: "★★★★★",
+                    comentario: {
+                        es: "Excelente servicio y ubicación. El personal nos atendió de maravilla y las instalaciones son imponentes.",
+                        en: "Excellent service and location. The staff was wonderful and the facilities are impressive."
+                    }
+                },
+                {
+                    nombre: "Elena & David",
+                    estrellas: "★★★★★",
+                    comentario: {
+                        es: "El proceso de reserva fue súper rápido y seguro. Volveremos sin duda.",
+                        en: "The booking process was super fast and secure. We will definitely be back."
+                    }
+                },
+                {
+                    nombre: "Sofia Ramírez",
+                    estrellas: "★★★★★",
+                    comentario: {
+                        es: "Habitaciones impecables con aire acondicionado perfecto para el clima. Recomendado al 100%.",
+                        en: "Immaculate rooms with perfect AC for the local climate. 100% recommended."
+                    }
+                }
+            ]
+        };
+
+        /* 
+         * =====================================================================
+         * 🌐 TRADUCCIONES DE LA INTERFAZ
+         * =====================================================================
+         */
+        const TRANSLATIONS = {
+            es: {
+                "nav-rooms": "Habitaciones",
+                "nav-gallery": "Galería",
+                "nav-location": "Ubicación",
+                "nav-reviews": "Reseñas",
+                "nav-book": "Reservar",
+                "hero-subtitle-prefix": "Descubre el descanso ideal en",
+                "hero-btn": "Reservar por WhatsApp",
+                "rooms-badge": "Hospedaje Premium",
+                "rooms-title": "Nuestras Habitaciones",
+                "btn-book-room": "Reservar Ahora",
+                "gallery-badge": "Explora la Propiedad",
+                "gallery-title": "Galería de fotos",
+                "location-badge": "Encuéntranos",
+                "location-title": "Ubicación Privilegiada",
+                "location-subtitle": "Dirección",
+                "location-desc": "Ubicado estratégicamente cerca de las principales atracciones para garantizar una estadía cómoda y accesible.",
+                "reviews-badge": "Experiencias Reales",
+                "reviews-title": "Lo que dicen nuestros huéspedes",
+                "booking-badge": "Reserva Directa",
+                "booking-title": "Solicita tu Reserva",
+                "lbl-room": "Habitación Seleccionada",
+                "lbl-name": "Nombre Completo",
+                "lbl-guests": "Número de Personas",
+                "opt-1p": "1 Persona",
+                "opt-2p": "2 Personas",
+                "opt-3p": "3-4 Personas",
+                "opt-group": "Grupo 5+",
+                "lbl-datein": "Fecha de Entrada",
+                "lbl-dateout": "Fecha de Salida",
+                "lbl-msg": "Mensaje Adicional / Peticiones Especiales",
+                "btn-confirm-wa": "Reservar vía WhatsApp",
+                "btn-confirm-email": "Reservar vía Correo",
+                "email-subject": "Solicitud de Reserva - ",
+                "msg-header": "Hola, quiero reservar en",
+                "msg-room": "Habitación",
+                "msg-name": "Nombre",
+                "msg-in": "Entrada",
+                "msg-out": "Salida",
+                "msg-guests": "Personas",
+                "msg-extra": "Mensaje",
+                "alert-fields": "Por favor completa los campos de Nombre, Entrada y Salida."
+            },
+            en: {
+                "nav-rooms": "Rooms",
+                "nav-gallery": "Gallery",
+                "nav-location": "Location",
+                "nav-reviews": "Reviews",
+                "nav-book": "Book Now",
+                "hero-subtitle-prefix": "Discover ideal relaxation in",
+                "hero-btn": "Book via WhatsApp",
+                "rooms-badge": "Premium Stay",
+                "rooms-title": "Our Rooms",
+                "btn-book-room": "Book Now",
+                "gallery-badge": "Explore the Property",
+                "gallery-title": "Photo Gallery",
+                "location-badge": "Find Us",
+                "location-title": "Prime Location",
+                "location-subtitle": "Address",
+                "location-desc": "Strategically located near major attractions to ensure a comfortable and accessible stay.",
+                "reviews-badge": "Real Experiences",
+                "reviews-title": "What Our Guests Say",
+                "booking-badge": "Direct Reservation",
+                "booking-title": "Request Your Booking",
+                "lbl-room": "Selected Room",
+                "lbl-name": "Full Name",
+                "lbl-guests": "Number of Guests",
+                "opt-1p": "1 Person",
+                "opt-2p": "2 People",
+                "opt-3p": "3-4 People",
+                "opt-group": "Group 5+",
+                "lbl-datein": "Check-in Date",
+                "lbl-dateout": "Check-out Date",
+                "lbl-msg": "Additional Message / Special Requests",
+                "btn-confirm-wa": "Book via WhatsApp",
+                "btn-confirm-email": "Book via Email",
+                "email-subject": "Booking Request - ",
+                "msg-header": "Hello, I want to book at",
+                "msg-room": "Room",
+                "msg-name": "Name",
+                "msg-in": "Check-in",
+                "msg-out": "Check-out",
+                "msg-guests": "Guests",
+                "msg-extra": "Message",
+                "alert-fields": "Please fill in the Name, Check-in, and Check-out fields."
+            }
+        };
+
+        let currentLang = 'es';
+
+        /* 
+         * =====================================================================
+         * 🚀 LÓGICA Y FUNCIONALIDAD PRINCIPAL
+         * =====================================================================
+         */
+        document.addEventListener('DOMContentLoaded', () => {
+            // Detectar Idioma del Navegador
+            const userLang = navigator.language || navigator.userLanguage;
+            if (userLang.startsWith('en')) {
+                currentLang = 'en';
+            }
+            document.getElementById('lang-select').value = currentLang;
+
+            // Renderizar la Interfaz por primera vez
+            renderUI();
+
+            // Evento para cambiar de idioma manualmente
+            document.getElementById('lang-select').addEventListener('change', (e) => {
+                currentLang = e.target.value;
+                renderUI();
             });
         });
+
+        // Función global para actualizar toda la interfaz
+        function renderUI() {
+            const t = TRANSLATIONS[currentLang];
+
+            // Actualizar Textos Traducibles del DOM
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (t[key]) el.innerText = t[key];
+            });
+
+            // Textos Generales
+            document.getElementById('nav-logo').innerHTML = `${HOTEL_CONFIG.nombre.split(' ')[0]}<span>${HOTEL_CONFIG.nombre.split(' ').slice(1).join(' ')}</span>`;
+            document.getElementById('hero-title').innerText = HOTEL_CONFIG.nombre;
+            document.getElementById('hero-subtitle').innerText = `${t['hero-subtitle-prefix']} ${HOTEL_CONFIG.ubicaciónTexto}`;
+            document.getElementById('hero-bg').style.backgroundImage = `url('${HOTEL_CONFIG.heroImagen}')`;
+            document.getElementById('location-address').innerText = HOTEL_CONFIG.ubicaciónTexto;
+            document.getElementById('map-iframe').src = HOTEL_CONFIG.mapaEmbedUrl;
+            document.getElementById('footer-text').innerText = `© ${new Date().getFullYear()} ${HOTEL_CONFIG.nombre}. All rights reserved.`;
+            document.getElementById('float-wa-btn').href = `https://wa.me/${HOTEL_CONFIG.whatsapp}`;
+
+            // Renderizar Tarjetas de Habitaciones
+            const roomsContainer = document.getElementById('rooms-container');
+            roomsContainer.innerHTML = HOTEL_CONFIG.habitaciones.map(room => `
+                <div class="room-card">
+                    <div class="room-image">
+                        <img src="${room.imagen}" alt="${room.titulo[currentLang]}">
+                        <div class="room-price-badge">${room.precio}</div>
+                    </div>
+                    <div class="room-info">
+                        <h3>${room.titulo[currentLang]}</h3>
+                        <p>${room.descripcion[currentLang]}</p>
+                        <button onclick="selectRoomAndScroll('${room.titulo[currentLang]}')" class="btn btn-primary" style="width: 100%;">
+                            ${t['btn-book-room']}
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+
+            // Actualizar Desplegable de Habitaciones en el Formulario
+            const roomSelect = document.getElementById('room-select');
+            const selectedValBefore = roomSelect.value;
+            roomSelect.innerHTML = HOTEL_CONFIG.habitaciones.map(room => `
+                <option value="${room.titulo[currentLang]}">${room.titulo[currentLang]} (${room.precio})</option>
+            `).join('');
+            if (selectedValBefore) roomSelect.value = selectedValBefore;
+
+            // Renderizar Galería
+            const galleryContainer = document.getElementById('gallery-container');
+            galleryContainer.innerHTML = HOTEL_CONFIG.galeria.map(imgUrl => `
+                <div class="gallery-item">
+                    <img src="${imgUrl}" alt="Galería Hotel">
+                </div>
+            `).join('');
+
+            // Renderizar Reseñas
+            const reviewsContainer = document.getElementById('reviews-container');
+            reviewsContainer.innerHTML = HOTEL_CONFIG.resenas.map(rev => `
+                <div class="review-card">
+                    <div class="stars">${rev.estrellas}</div>
+                    <p>"${rev.comentario[currentLang]}"</p>
+                    <div class="reviewer-name">${rev.nombre}</div>
+                </div>
+            `).join('');
+        }
+
+        // Función al hacer clic en "Reservar Ahora" en una habitación específica
+        function selectRoomAndScroll(roomTitle) {
+            const roomSelect = document.getElementById('room-select');
+            roomSelect.value = roomTitle;
+            document.getElementById('reservar').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Manejador central para enviar por WhatsApp o Email
+        function sendBooking(method) {
+            const t = TRANSLATIONS[currentLang];
+            const name = document.getElementById('client-name').value;
+            const dateIn = document.getElementById('date-in').value;
+            const dateOut = document.getElementById('date-out').value;
+            const roomSelected = document.getElementById('room-select').value;
+            const guests = document.getElementById('guests').value;
+            const message = document.getElementById('extra-message').value || "Ninguno";
+
+            // Validar campos básicos
+            if (!name || !dateIn || !dateOut) {
+                alert(t['alert-fields']);
+                return;
+            }
+
+            // Formatear Mensaje
+            const rawMessage = `${t['msg-header']} ${HOTEL_CONFIG.nombre}.
+${t['msg-room']}: ${roomSelected}
+${t['msg-name']}: ${name}
+${t['msg-in']}: ${dateIn}
+${t['msg-out']}: ${dateOut}
+${t['msg-guests']}: ${guests}
+${t['msg-extra']}: ${message}`;
+
+            if (method === 'whatsapp') {
+                const waUrl = `https://wa.me/${HOTEL_CONFIG.whatsapp}?text=${encodeURIComponent(rawMessage)}`;
+                window.open(waUrl, '_blank');
+            } else if (method === 'email') {
+                const subject = encodeURIComponent(`${t['email-subject']} ${name}`);
+                const body = encodeURIComponent(rawMessage);
+                const mailtoUrl = `mailto:${HOTEL_CONFIG.email}?subject=${subject}&body=${body}`;
+                window.location.href = mailtoUrl;
+            }
+        }
     </script>
 </body>
 </html>
